@@ -1,0 +1,74 @@
+<document>
+	<properties>
+		<title>Changes of 1jar-maven-plugin Project</title>
+		<author email="development@thomas-michel.info">
+			Thomas Schubert
+		</author>
+	</properties>
+	<body>
+		<release version="1.3" date="2009-01-01"
+			description="First Release with name 1jar-maven-plugin">
+			<action dev="SchubertT006" type="update">
+				Because no contact to the
+				author of onejar-maven-plugin (Drew Stovall) via mail
+				(onejar-maven-plugin@dstovall.org) was established, so i have
+				renamed the project to 1jar-maven-plugin.
+				This was done to avoid
+				trouble with identical version of my code with the code of the
+				original author (Drew Stovall).
+				I would like to merge the different
+				versions for the future. The author
+				could contact me via mail to
+				development@thomas-michel.info.
+            </action>
+			<action dev="SchubertT006" type="add">
+				New parameter policyFile. This
+				parameter is sometimes needed for usage in web start
+				applications.
+            </action>
+			<action dev="SchubertT006" type="add">
+				After creation of one-jar.jar
+				file, this will be added to the list of artifacts.
+				So other plugins,
+				such as pgp plugin could find the artifact.
+            </action>
+			<action dev="SchubertT006" type="add">
+				The dependencies wiht scope runtime are now supported to add as
+				libraries. This was needed
+				for libraries such as ICE_JNIRegistry-1.dll. 
+            </action>
+		</release>
+		<release version="1.2.3-beta" date="2008-10-01" description="Subsequent release">
+			<action dev="SchubertT006" type="add">
+				New reports added.
+			</action>
+			<action dev="SchubertT006" type="add">
+				New parameter stripVersion
+				added.
+			</action>
+			<action dev="SchubertT006" type="add">
+				New parameter fileNameMap
+				added.
+			</action>
+		</release>
+		<release version="1.2.2" date="">
+			<action dev="m0smith" type="update">
+				Contributing code to simplify the
+				manifest manipulations
+				and adding the Implementation Version manifest
+				entry key.
+			</action>
+			<action dev="m0smith" type="fix" issue="">
+				Out of Memory Error was	resolved.
+			</action>
+		</release>
+		<release version="1.2.1" date="">
+			<action dev="amirk" type="add">
+				Contributing code to allow the plugin
+				to operate without
+				an exectuable jar. (ie the mainClass configuration
+				parameter)
+			</action>
+		</release>
+	</body>
+</document>

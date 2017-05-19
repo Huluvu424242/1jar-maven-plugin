@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<document>
+	<properties>
+		<title>1JAR Maven Plugin</title>
+		<author email="development@thomas-michel.info">Thomas Schubert</author>
+	</properties>
+	<body>
+
+		<section name="1JAR Maven Plugin">
+			<p>
+				The original project was the onejar-maven-plugin project (
+				<a href="http://www.dstovall.org/onejar-maven-plugin/index.html">
+					http://www.dstovall.org/onejar-maven-plugin/index.html</a>
+				). I have download and modify the sources and send a mail to
+				the
+				author (Drew Stovall). My hope was: Drew will be merge the sources
+				but i does not received a answer for a long time.
+				So i have renamed
+				the project and published the modified sources under the
+				1jar-maven-plugin project.
+			</p>
+			<p>
+				The main function of the 1jar-maven-plugin is to support a standard
+				deployment for the one-jar technology of the
+				<a href="http://one-jar.sourceforge.net/">One-Jar project</a>
+				on source-forge.
+			</p>
+		</section>
+
+		<section name="To Do">
+			<p>
+				This is a list of things wich the original author would be do but
+				i will evaluate the list in the future for me.
+				</p>
+			<ul>
+				<li>Support the 'expand' functionality</li>
+
+				<li>Convert plugin to delegate to the ant tasks to increase
+					seperation of
+					concerns</li>
+
+				<li> the manifest file to remove the boot warning that I get when
+					running	the resulting jar file.</li>
+
+				<li>Error out if the project's jar is not executable and no
+					mainClass parameter is given.</li>
+
+				<li>Some sort of test cases...</li>
+			</ul>
+		</section>
+		<section name="Error when starting your app?">
+			<p>
+				If you get this error when starting your application:
+            </p>
+			<source>
+	Boot: Warning: Unable to locate main/main.jar in the JAR file
+	target/myproject-1.0-SNAPSHOT.one-jar.jar
+	Exception in thread "main" java.lang.Exception:
+	myproject-1.0-SNAPSHOT.one-jar.jar main class was not
+	found (fix: add main/main.jar with a Main-Class manifest attribute, or
+	specify -Done-jar.main.class=&lt;your.class.name&gt;),
+	or use One-Jar-Main-Class in the manifest
+	    at com.simontuffs.onejar.Boot.run(Boot.java:285)
+	    at com.simontuffs.onejar.Boot.main(Boot.java:159)
+	</source>
+	<p>
+		Then you're either (a) not making your standard jar executable or (b) not
+		providing a mainClass argument. Better messaging about this
+		configuration
+		error is in the works.
+	</p>
+	</section>
+	<section name="Notes">
+	<p>
+	    I think the one-jar must be an new package type for the future 
+	    to satisfy the maven restrictions.
+	</p>
+	</section>
+
+	</body>
+</document>
+

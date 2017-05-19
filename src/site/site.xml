@@ -1,0 +1,37 @@
+<project name="1jar-maven-plugin">
+	<!--
+		bannerLeft> <name>onejar-maven-plugin</name>
+		<src>http://www.dstovall.org/onejar-maven-plugin/images/logo.png</src>
+		<href>http://www.dstovall.org/onejar-maven-pluginr</href>
+		</bannerLeft> <bannerRight> <name>onejar-maven-plugin</name>
+		<src>http://www.dstovall.org/onejar-maven-plugin/images/logo-small.png</src>
+		<href>http://www.dstovall.org/onejar-maven-plugin</href> </bannerRight
+	-->
+	<body>
+		<menu name="Master project">
+			<item name="Components project"
+				href="https://ssl-account.com/thomas-michel.info/siteroot/components/index.html" />
+		</menu>
+		<menu name="Version ${project.version}">
+			<item name="Home" href="index.html" />
+			<item name="Release Notes" href="changes-report.html" />
+			<item name="History" href="history.html" />
+			<item name="FAQ" href="FAQ.html" />
+			<item name="Download area" href="download.html" collapse="true">
+				<item name="Binary jar-with-dep"
+					href="archives/${project.build.finalName}-jar-with-dependencies.jar" />
+				<item name="Binary tar.bz2" href="archives/${project.build.finalName}-bin.tar.bz2" />
+				<item name="Binary tar.gz" href="archives/${project.build.finalName}-bin.tar.gz" />
+				<item name="Binary zip" href="archives/${project.build.finalName}-bin.zip" />
+				<item name="Project tar.bz2"
+					href="archives/${project.build.finalName}-project.tar.bz2" />
+				<item name="Project tar.gz" href="archives/${project.build.finalName}-project.tar.gz" />
+				<item name="Project zip" href="archives/${project.build.finalName}-project.zip" />
+				<item name="Source tar.bz2" href="archives/${project.build.finalName}-src.tar.bz2" />
+				<item name="Source tar.gz" href="archives/${project.build.finalName}-src.tar.gz" />
+				<item name="Source zip" href="archives/${project.build.finalName}-src.zip" />
+			</item>
+		</menu>
+		<menu ref="reports" />
+	</body>
+</project>

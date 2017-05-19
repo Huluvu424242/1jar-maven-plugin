@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<faqs title="Frequently Asked Questions(FAQ)" toplink="false">
+
+	<part id="plugin">
+		<title>Plugin Configuration</title>
+
+		<faq id="maven-params">
+			<question>
+				What means the
+				<strong>intern</strong>
+				plugin parameter?
+			</question>
+			<answer>
+				<dl>
+					<dt>artifacts</dt>
+					<dd>
+						All the dependencies including trancient
+						dependencies. Type: java.util.Collection,
+						@required, @readonly,
+						default:${project.artifacts}
+					</dd>
+					<dt>outputDirectory</dt>
+					<dd>
+						The directory for the resulting file. Type:
+						java.io.File, @required, @readonly,
+						default:${project.build.directory}
+					</dd>
+					<dt>mainJarFilename</dt>
+					<dd>
+						Name of the main JAR. Type: java.lang.String,
+						@readonly, @required,
+						default:${project.build.finalName}.jar
+					</dd>
+					<dt>implementationVersion</dt>
+					<dd>
+						Implementation Version of the jar. Defaults to
+						the build's version. Type: java.lang.String,
+						@required, default:${project.version}
+					</dd>
+					<dt>filename</dt>
+					<dd>
+						Name of the generated JAR. Type:
+						java.lang.String, @required, default:
+						${project.build.finalName}.one-jar.jar
+					</dd>
+				</dl>
+			</answer>
+		</faq>
+		<faq id="user-params">
+			<question>
+				What means the
+				<strong>useable</strong>
+				plugin parameter?
+			</question>
+			<answer>
+				<dl>
+					<dt>mainClass</dt>
+					<dd>
+						The main class that one-jar should activate.
+						Type: java.lang.String,
+						default:${onejar-mainclass}
+					</dd>
+					<dt>onejarVersion</dt>
+					<dd>
+						The version of one-jar to use. Has a default, so
+						typically no need to specify this. Type:
+						java.lang.String, default:${onejar-version}"
+						default-value="0.96"
+					</dd>
+					<dt>fileNameMap</dt>
+                    <dd>
+                        Map to define a mapping of library names to
+                        target names. The mapping is executed before the 
+                        stripVersion parameters is executed.
+                        Type: java.util.Map, no default
+                    </dd>
+					<dt>stripVersion</dt>
+					<dd>
+						Strip the version numbers of all libraries.
+						Type: boolean, default:false
+					</dd>
+				</dl>
+			</answer>
+		</faq>
+		<faq id="repositories">
+			<question>
+				Which maven repository contains the onejar-maven-plugin?
+			</question>
+			<answer>
+			<p>
+				This plugin is not available in the standard maven
+				repository. But you can download it via the following
+				repository entry in your pom.xml
+				</p><p>For plugin version of the owner until 1.2.2</p>
+				<source>
+<pluginRepositories>
+	<pluginRepository>
+		<id>maven@dstovall.org</id>
+		<name>dstovall.org Repository</name>
+		<url>http://dstovall.org/maven2</url>
+		<layout>default</layout>
+	</pluginRepository>
+</pluginRepositories>
+				</source>
+				<p>For plugin version 1.2.3-beta</p>
+				<source>
+<pluginRepositories>
+	<pluginRepository>
+	    <id>FunThomasRepository</id>
+	    <name>FunThomas Repository</name>
+	    <url>
+	        http://thomas-michel.info/maven_repository
+	    </url>
+	    <layout>default</layout>
+	</pluginRepository>
+</pluginRepositories>
+                </source>
+			</answer>
+		</faq>
+	</part>
+
+
+	<part id="example">
+		<title>Example to use the onejar-maven-plugin</title>
+
+		<faq id="usageicejni">
+			<question>How can i use ICE JNI with onejar-maven-plugin?</question>
+			<answer>
+                <p> 
+				<ol>
+					<li>
+						Download the zip from
+						<a href="http://www.trustice.com/java/jnireg/">
+						http://www.trustice.com/java/jnireg/
+						</a>
+					</li>
+					<li>
+						Extract the files: ICE_JNIRegistry.dll and
+						registry.jar
+					</li>
+					<li><p>
+						Add the files to your local maven repository, like this:</p>
+						<source>
+mvn install:install-file \
+-DgroupId=com.ice -DartifactId=registry -Dversion=3.1.3 -Dpackaging=jar -Dfile=registry.jar
+						</source>
+						<source>
+mvn install:install-file \
+-DgroupId=com.ice -DartifactId=ICE_JNIRegistry -Dversion=3.1.3	-Dpackaging=dll -Dfile=ICE_JNIRegistry.dll
+						</source>
+						<p>
+						This will build the following structure in the
+						local m2 repository.</p>
+						<source>
+m2\com\ice\registry\3.1.3\registry-3.1.3.jar
+m2\com\ice\ICE_JNIRegistry\3.1.3\ICE_JNIRegistry-3.1.3.dll
+						</source>
+						In a project you can use the archives as dependency.
+						<source>
+<dependencies>
+	<dependency>
+		<groupId>com.ice</groupId>
+		<artifactId>registry</artifactId>
+		<version>3.1.3</version>
+		<type>jar</type>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>com.ice</groupId>
+		<artifactId>
+			ICE_JNIRegistry
+		</artifactId>
+		<version>3.1.3</version>
+		<type>dll</type>
+		<scope>compile</scope>
+	</dependency>
+</dependencies>
+						</source>
+						If you want all put together in one jar so it does not work
+						because the libraries are not in the classpath of your
+						main class.
+						Now you can use the onejar technology of bootstrap classloader 
+						for libs wich are located in a jar. onejar-maven-plugin will 
+						help todo this!
+					</li>
+					<li>
+					You can use the onejar-maven-plugin as following:
+					<source>
+<build>
+     <plugins>
+            <plugin>
+                <groupId>org.dstovall</groupId>
+                <artifactId>onejar-maven-plugin</artifactId>
+                <version>1.2.3-beta</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <mainClass>
+                                info.thomas_michel.lib.win.Main
+                            </mainClass>
+                            <!-- Optional -->
+                            <onejarVersion>0.96</onejarVersion>
+                            <stripVersion>false</stripVersion>
+                            <fileNameMap>
+                                <ICE_JNIRegistry-3.1.3.dll>
+                                    ICE_JNIRegistry.dll
+                                </ICE_JNIRegistry-3.1.3.dll>
+                            </fileNameMap>
+                        </configuration>
+                        <goals>
+                            <goal>one-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+           </plugin>
+    </plugins>
+</build>
+					</source>
+					Change the main class to your main class!
+					</li>
+					<li>
+					This command
+					<source>mvn clean package </source> will build your jar: 
+					<ul>
+					<li>
+					Where your classes are bundled in a jar in the folder main</li>
+					<li>The dll located in the folder binlibs 
+					with name ICE_JNIRegistry.dll</li>
+					<li>And the registry.jar is located in the 
+					folder lib.</li>
+					<li>The manifest main class will refer to the bootclass 
+					of onejar and the One-Jar-Main-Class entry will refer to your main class.</li>
+					</ul>
+					Now it works fine :-)
+					</li>
+				</ol>
+</p>
+	       	</answer>
+		</faq>
+	</part>
+	
+	<part id="bugs">
+		<title>Known bugs of Plugin</title>
+		<faq id="knownbugs">
+			<question>Wich bugs are known?</question>
+			<answer>
+				<ul>
+					<li>
+						The <i>stripVersion</i> parameter stripped the tail of
+						fileName after the last "-". So if you use a
+						-SNAPSHOT or -beta version only the word SNAPSHOT or beta will be
+						removed. The reason is a very simple algorithm.
+						I think at the moment now complex algorithm is
+						needed (Thomas Schubert).
+					</li>
+					<li>
+						The native libraries such as <i>*.dll, *.so</i> will be
+						only included if you use the dependency scope
+						"compile" for this libraries. The correct scope
+						"runtime" is not supported at now!
+					</li>
+				</ul>
+			</answer>
+		</faq>
+	</part>
+</faqs>

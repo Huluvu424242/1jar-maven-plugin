@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<document>
+	<properties>
+		<title>History</title>
+		<author email="development@thomas-michel.info">Thomas Schubert</author>
+	</properties>
+	<body>
+		<section name="Updates (version 1.3)">
+			<p> Set up the modified sources as a new project owned by Thomas Schubert.</p>
+		</section>
+		<section name="Updates (version 1.2.2)">
+			<p>
+				Thank you to
+				<a href="http://www.ferociousflirting.com">Matthew O. Smith</a>
+				for contributing code to simplify the manifest manipulations and
+				adding the Implementation Version manifest entry key.
+			</p>
+			<p>
+				Thank you to Stig Kleppe-Jorgensen
+				for contributing code to support multiproject builds.
+            </p>
+			<a href="http://dstovall.org/maven2/org/dstovall/onejar-maven-plugin/1.2.2/onejar-maven-plugin-1.2.2-sources.jar">Source Code</a>
+		</section>
+		<section name="Updates (version 1.2.1)">
+			<p>
+				Thank you to
+				<a href="http://shineframework.sourceforge.net/site/index.html">Amir Kibbar</a>
+				for contributing code to allow the plugin to operate without an
+				exectuable jar. (ie the mainClass configuration parameter)
+			</p>
+
+			<a
+				href="http://dstovall.org/maven2/org/dstovall/onejar-maven-plugin/1.2.1/onejar-maven-plugin-1.2.1-sources.jar">Source Code</a>
+		</section>
+		<section name="Updates (version 1.2)">
+			<p>
+				I've gotten several requests for the source code to this project...
+				I appologize for both not having it available in the first place,
+				and the
+				delay in making it available. You can download a jar from the
+				<a
+					href="http://dstovall.org/maven2/org/dstovall/onejar-maven-plugin/1.2/onejar-maven-plugin-1.2-sources.jar">maven repository</a>
+				or access the SVN repository directly at
+				svn://dstovall.org/svn/onejar-maven-plugin.
+			</p>
+			<p>
+				The last version (1.0) of the plugin used a template jar file that
+				included
+				a license file from the original
+				<a href="http://one-jar.sourceforge.net/">one-jar
+					project</a>
+				. I've taken that out per your requests. The URL of the license
+				is
+				still logged to the screen when the plugin is used.
+			</p>
+			<p>
+				I've updated the default version to the latest version of one-jar
+				(0.96).
+				If you want to use the previous version of one-jar, just
+				specfiy 0.95
+				as the
+				argument to the
+				<strong>onejarVersion</strong>
+				argument.
+			</p>
+		</section>
+		<section name="Updates (version 1.1)">
+			<p>
+				This release got screwed up... I'm still learning the maven
+				release
+				process.
+      </p>
+		</section>
+	</body>
+</document>
+
